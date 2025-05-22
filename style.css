@@ -2,6 +2,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    background-color: lightgray;
 }
 
 #display {
@@ -30,3 +31,9 @@ body {
     align-self: center;
     width: 80vw;
 }
+
+#functionInputs {
+    display: flex;
+    flex-direction: column;
+}
+

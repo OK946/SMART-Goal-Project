@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gi-84</title>
     <link rel="stylesheet" href="/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
@@ -20,7 +20,17 @@
     </div>
     <div id="graphArea">
         <canvas id="graph"></canvas>
-        <input id="graphInput" type="text">
+        <div id="graphOptions">
+            <div id="functionInputs">
+                <input id="graphInput1" type="text" placeholder="Function 1 Input">
+                <input id="graphInput2" type="text" placeholder="Function 2 Input">
+                <input id="graphInput3" type="text" placeholder="Function 3 Input">
+                <input id="graphInput4" type="text" placeholder="Function 4 Input">
+                <input id="graphInput5" type="text" placeholder="Function 5 Input">
+            </div>
+            <input id="minX" type="text" placeholder="Minimum X Value">
+            <input id="maxX" type="text" placeholder="Maximum X Value">
+        </div>
         <button id="graphButton">Graph</button>
     </div>
     <script src="/script.js"></script>
