@@ -3,7 +3,7 @@ const input = document.getElementById(`calculatorInput`);
 const output = document.getElementById(`equation`);
 const history = document.getElementById(`history`);
 let historyList = ``;
-
+input.focus();
 calculate.addEventListener(`click`, () => {
   if (input.value.length !== 0) {
     if (output.innerHtml !== `<p>Type to Begin</p>`) {
@@ -203,4 +203,10 @@ function generateData(value, i1 = 0, i2 = 10, step = 1) {
             }
   };
   graph.update();
+}
+
+
+
+function letterCheck(string) {
+  return string.split("a").join("").split("A").join("").split("b").join("").split("B").join("").split("c").join("").split("C").join("").split("d").join("").split("D").join("").split("e").join("").split("E").join("").split("f").join("").split("F").join("").split("g").join("").split("G").join("").split("h").join("").split("H").join("").split("i").join("").split("I").join("").split("j").join("").split("J").join("").split("k").join("").split("K").join("").split("l").join("").split("L").join("").split("m").join("").split("M").join("").split("n").join("").split("N").join("").split("o").join("").split("O").join("").split("p").join("").split("P").join("").split("q").join("").split("Q").join("").split("r").join("").split("R").join("").split("s").join("").split("S").join("").split("t").join("").split("T").join("").split("u").join("").split("U").join("").split("v").join("").split("V").join("").split("w").join("").split("W").join("").split("x").join("").split("X").join("").split("y").join("").split("Y").join("").split("z").join("").split("Z").join("").split("!").join("").split("@").join("").split("$").join("").split("&").join("").split("_").join("").split("=").join("").split(",").join("").split("<").join("").split(">").join("").split("?").join("").split(";").join("").split(":").join("").split(`\``).join("").split("\\").join("").split("|").join("").split("~").join("");
 }
