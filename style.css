@@ -1,3 +1,6 @@
+:root {
+    --font: 10px;
+}
 
 
 body {
@@ -5,16 +8,37 @@ body {
     display: flex;
     flex-direction: column;
     background-color: rgb(218, 218, 218);
+    height: 100vh;
+    justify-content: center;
 }
 
 #display {
-    width: 80%;
-    height: 40vh;
+    padding: 0.5em;
+    width: 95vw;
+    height: 95vh;
     align-self: center;
-    background-color: rgb(85, 107, 47, 0.5);
+    background-color: rgba(152,163,133,255);
     display: flex;
     flex-direction: column;
+    font-size: calc(var(--font)* 2 );
     font-family: calculator;
+    box-shadow: inset 0 0 10px rgb(46, 46, 46);
+}
+
+#calculatorArea {
+    display: flex;
+    flex-direction: column;
+}
+
+#calculatorInput {
+    background-color: rgba(152,163,133,255);
+    font-size: calc(var(--font)* 2 );
+    font-family: calculator;
+}
+
+
+#calculatorInput:focus {
+
 }
 
 #history {
@@ -24,15 +48,15 @@ body {
 }
 
 #graph {
-    max-width: 75%;
+    max-width: 90%;
 }
 
 #graphArea {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     align-self: center;
-    width: 80vw;
+    width: 90vw;
 }
 
 #functionInputs {

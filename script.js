@@ -2,16 +2,39 @@ const calculate = document.getElementById(`calculateButton`);
 const input = document.getElementById(`calculatorInput`);
 const output = document.getElementById(`equation`);
 const history = document.getElementById(`history`);
+document.addEventListener(`keydown`, (event) =>{
+  if(event.key === `g`){
+    if(document.getElementById(`calculatorArea`).style.display == `none`){
+      document.getElementById(`graphArea`).style.display = `none`;
+      document.getElementById(`calculatorArea`).style.display = `contents`;
+      input.focus();
+    }else {
+      document.getElementById(`graphArea`).style.display = `flex`;
+      document.getElementById(`calculatorArea`).style.display = `none`;
+    }
+  } else if(event.key === `Enter`){
+    if (input.value.length !== 0) {
+      if (output.innerHtml !== `<p>Type to Begin</p>`) {
+        historyList += `<div class="answer"><p>${input.value} =</p><p>${calculation(input.value)}</p></div>`
+        history.innerHTML = historyList;
+        history.scrollTop = history.scrollHeight;
+      }
+      output.innerHTML = `<div class="answer"><p>${input.value} </p><p>${calculation(input.value)}</p></div>`
+    }
+  }
+  console.log(`key`)
+});
+
 let historyList = ``;
 input.focus();
 calculate.addEventListener(`click`, () => {
   if (input.value.length !== 0) {
     if (output.innerHtml !== `<p>Type to Begin</p>`) {
-      historyList += `<div class="answer"><p>${input.value}</p><p>${calculation(input.value)}</p></div>`
+      historyList += `<div class="answer"><p>${input.value} =</p><p>${calculation(input.value)}</p></div>`
       history.innerHTML = historyList;
       history.scrollTop = history.scrollHeight;
     }
-    output.innerHTML = `<div class="answer"><p>${input.value}</p><p>${calculation(input.value)}</p></div>`
+    output.innerHTML = `<div class="answer"><p>${input.value} </p><p>${calculation(input.value)}</p></div>`
   }
 });
 
