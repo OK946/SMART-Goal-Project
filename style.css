@@ -14,13 +14,13 @@ body {
 
 #display {
     padding: 0.5em;
-    width: 95vw;
+    width:  90vw;
     height: 95vh;
     align-self: center;
     background-color: rgba(152,163,133,255);
     display: flex;
     flex-direction: column;
-    font-size: calc(var(--font)* 2 );
+    font-size: calc(var(--font)* 3 );
     font-family: calculator;
     box-shadow: inset 0 0 10px rgb(46, 46, 46);
 }
@@ -32,17 +32,51 @@ body {
 
 #calculatorInput {
     background-color: rgba(152,163,133,255);
-    font-size: calc(var(--font)* 2 );
+    font-size: calc(var(--font)* 3 );
     font-family: calculator;
+    height: 8vh;
+    border: 1px black dotted;
 }
 
+#calculateButton{
+    margin-top: 10vh;
+    width: 20vw;
+    align-self: center;
+    padding: 1em 1em 2em 1em;
+    border-radius: 1rem 1rem 3rem 3rem;
+    transition: background-color 0.5s;
+    background-color: rgb(251, 240, 227);
+    font-family: calculator;
+    font-size: calc(var(--font)* 2 );
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
 
-#calculatorInput:focus {
+#calculateButton:hover, #switch:hover, #graphButton:hover {
+    cursor: pointer;
+    background-color: rgb(218, 207, 196);
+}
 
+#switch {
+    position: absolute;
+    left: 85vw;
+    top: 90vh;
+    width: 10vw;
+    padding: 1em 1em 2em 1em;
+    border-radius: 1rem 1rem 3rem 3rem;
+    transition: background-color 0.5s;
+    background-color: rgb(251, 240, 227);
+    font-family: calculator;
+    font-size: calc(var(--font)* 2 );
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    max-height: 7vh;
 }
 
 #history {
-    max-height: 20vh;
+    height: 40vh;
     overflow-y: scroll;
     border: 1px black dotted;
 }
@@ -57,11 +91,30 @@ body {
     align-items: center;
     align-self: center;
     width: 90vw;
+    justify-content: space-between;
+}
+
+#graphButton {
+    padding: 1em 1em 2em 1em;
+    border-radius: 1rem 1rem 3rem 3rem;
+    transition: background-color 0.5s;
+    background-color: rgb(251, 240, 227);
+    font-family: calculator;
+    font-size: calc(var(--font)* 2 );
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    max-height: 7vh
+}
+
+#graphOptions {
+    display: flex;
 }
 
 #functionInputs {
     display: flex;
     flex-direction: column;
+    margin-right: 1vw;
 }
 
 @font-face {

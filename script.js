@@ -2,7 +2,8 @@ const calculate = document.getElementById(`calculateButton`);
 const input = document.getElementById(`calculatorInput`);
 const output = document.getElementById(`equation`);
 const history = document.getElementById(`history`);
-document.addEventListener(`keydown`, (event) =>{
+const changer = document.getElementById(`switch`);
+document.addEventListener(`keyup`, (event) =>{
   if(event.key === `g`){
     if(document.getElementById(`calculatorArea`).style.display == `none`){
       document.getElementById(`graphArea`).style.display = `none`;
@@ -24,6 +25,17 @@ document.addEventListener(`keydown`, (event) =>{
   }
   console.log(`key`)
 });
+
+changer.addEventListener(`click`, () => {
+  if(document.getElementById(`calculatorArea`).style.display == `none`){
+    document.getElementById(`graphArea`).style.display = `none`;
+    document.getElementById(`calculatorArea`).style.display = `contents`;
+    input.focus();
+  }else {
+    document.getElementById(`graphArea`).style.display = `flex`;
+    document.getElementById(`calculatorArea`).style.display = `none`;
+  }
+})
 
 let historyList = ``;
 input.focus();
