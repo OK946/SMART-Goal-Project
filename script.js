@@ -3,8 +3,10 @@ const input = document.getElementById(`calculatorInput`);
 const output = document.getElementById(`equation`);
 const history = document.getElementById(`history`);
 const changer = document.getElementById(`switch`);
+const catalan = 0.915965594177219015054603514932384110774;
+
 document.addEventListener(`keyup`, (event) =>{
-  if(event.key === `g`){
+  if(event.key === `l`){
     if(document.getElementById(`calculatorArea`).style.display == `none`){
       document.getElementById(`graphArea`).style.display = `none`;
       document.getElementById(`calculatorArea`).style.display = `contents`;
@@ -51,52 +53,103 @@ calculate.addEventListener(`click`, () => {
 });
 
 function calculation(equation) {
-  let noSpace = equation.split(` `).join().replace(/,/g, ``);
-  console.log(noSpace)
-  console.log(noSpace.split(` `))
-  let addFilter = noSpace.split(`+`)
-  let multFilter = noSpace.split(`*`)
-  let subFilter = noSpace.split(`-`)
-  let divFilter = noSpace.split(`/`)
-  let expFilter = noSpace.split(`^`)
+  let e = equation.replace(`e`, Math.E).replace(`E`, Math.E);
+  let pi = e.replace(`pi`, Math.PI).replace(`Pi`,Math.PI).replace(`PI`,Math.PI).replace(`pI`,Math.PI);
+  let G = pi.replace(`g`, catalan).replace(`G`,catalan);
+  let noSpace = G.split(` `).join().replace(/,/g, ``);
+  console.log(noSpace);
+  console.log(noSpace.split(` `));
+  let parenthesisLocation = noSpace.indexOf(`(`);
+  let addFilter = noSpace.split(`+`);
+  let multFilter = noSpace.split(`*`);
+  let subFilter = noSpace.split(`-`);
+  let divFilter = noSpace.split(`/`);
+  let expFilter = noSpace.split(`^`);
   console.log(multFilter)
   if (subFilter[0] !== noSpace) {
-    return subtract(Number(calculation(subFilter[0])), Number(calculation(subFilter[1])))
+    let eParts = [];
+    for(let i = 0; i < subFilter.length; i++){
+      eParts.push(calculation(subFilter[i]));
+    }
+    return subtract(...eParts);
   } else
     if (addFilter[0] !== noSpace) {
-      return add(Number(calculation(addFilter[0])), Number(calculation(addFilter[1])))
+      let eParts = [];
+      for(let i = 0; i < addFilter.length; i++){
+        eParts.push(calculation(addFilter[i]));
+      }
+      return add(...eParts);
     }
   if (divFilter[0] !== noSpace) {
-    return divide(Number(calculation(divFilter[0])), Number(calculation(divFilter[1])))
+    let eParts = [];
+    for(let i = 0; i < divFilter.length; i++){
+      eParts.push(calculation(divFilter[i]));
+    }
+    return divide(...eParts);
   } else
     if (multFilter[0] !== noSpace) {
-      return multiply(Number(calculation(multFilter[0])), Number(calculation(multFilter[1])))
+      let eParts = [];
+      for(let i = 0; i < multFilter.length; i++){
+        eParts.push(calculation(multFilter[i]));
+      }
+      return multiply(...eParts);
     }
   if (expFilter[0] !== noSpace) {
-    return exponate(Number(calculation(expFilter[0])), Number(calculation(expFilter[1])))
+    let eParts = [];
+    for(let i = 0; i < expFilter.length; i++){
+      eParts.push(calculation(expFilter[i]));
+    }
+    return exponate(...eParts);
   }
   return Number(noSpace);
 }
 
 
-function add(first, second) {
-  return first + second;
+function add() {
+  let sum = 0;
+  for (let i = 0; i < arguments.length; i++) {
+    sum += Number(arguments[i]);
+  }
+  return sum;
 }
 
-function subtract(first, second) {
-  return first - second;
+function subtract() {
+  let result = arguments[0];
+  for (let i = 1; i < arguments.length; i++) {
+    result -= Number(arguments[i]);
+  }
+  return result;
 }
 
-function multiply(first, second) {
-  return first * second;
+function multiply() {
+  let product = 1;
+  for (let i = 0; i < arguments.length; i++) {
+    product *= Number(arguments[i]);
+  }
+  return product;
 }
 
-function divide(first, second) {
-  return first / second;
+function divide() {
+  let result = arguments[0];
+  for (let i = 1; i < arguments.length; i++) {
+    if (Number(arguments[i]) === 0) {
+      return undefined;
+    }
+    result /= Number(arguments[i]);
+  }
+  return result;
 }
 
-function exponate(term, power) {
-  return term ** power;
+function exponate(...numbers) {
+  if (numbers.length === 0) {
+    return undefined;
+  }
+  let result = numbers[0];
+  for (let i = 1; i < numbers.length; i++) {
+    result = result ** numbers[i];
+  }
+  return result;
+
 }
 
 
@@ -238,10 +291,4 @@ function generateData(value, i1 = 0, i2 = 10, step = 1) {
             }
   };
   graph.update();
-}
-
-
-
-function letterCheck(string) {
-  return string.split("a").join("").split("A").join("").split("b").join("").split("B").join("").split("c").join("").split("C").join("").split("d").join("").split("D").join("").split("e").join("").split("E").join("").split("f").join("").split("F").join("").split("g").join("").split("G").join("").split("h").join("").split("H").join("").split("i").join("").split("I").join("").split("j").join("").split("J").join("").split("k").join("").split("K").join("").split("l").join("").split("L").join("").split("m").join("").split("M").join("").split("n").join("").split("N").join("").split("o").join("").split("O").join("").split("p").join("").split("P").join("").split("q").join("").split("Q").join("").split("r").join("").split("R").join("").split("s").join("").split("S").join("").split("t").join("").split("T").join("").split("u").join("").split("U").join("").split("v").join("").split("V").join("").split("w").join("").split("W").join("").split("x").join("").split("X").join("").split("y").join("").split("Y").join("").split("z").join("").split("Z").join("").split("!").join("").split("@").join("").split("$").join("").split("&").join("").split("_").join("").split("=").join("").split(",").join("").split("<").join("").split(">").join("").split("?").join("").split(";").join("").split(":").join("").split(`\``).join("").split("\\").join("").split("|").join("").split("~").join("");
 }

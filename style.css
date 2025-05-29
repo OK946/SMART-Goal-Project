@@ -38,6 +38,14 @@ body {
     border: 1px black dotted;
 }
 
+.calcInputs {
+    background-color: rgba(152,163,133,255);
+    font-size: calc(var(--font)* 3 );
+    border: 1px black dotted;
+    font-family: calculator;
+    width: 20vw;
+}
+
 #calculateButton{
     margin-top: 10vh;
     width: 20vw;
